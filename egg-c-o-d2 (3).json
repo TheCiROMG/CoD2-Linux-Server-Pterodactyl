@@ -1,0 +1,42 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-02-25T21:09:30-03:00",
+    "name": "COD2",
+    "author": "dominique@wellisch-itservice.de",
+    "description": null,
+    "features": [],
+    "docker_images": {
+        "ghcr.io\/pelican-eggs\/steamcmd:debian": "ghcr.io\/pelican-eggs\/steamcmd:debian"
+    },
+    "file_denylist": [],
+    "startup": "LD_PRELOAD=.\/libCoD2x.so LD_LIBRARY_PATH=.\/gcc3-libs .\/cod2_lnxded +set dedicated 2 +set net_ip 0.0.0.0 +set net_port ${SERVER_PORT} +set net_queryPort ${SERVER_PORT} +set sv_lan 0 +exec server.cfg +map mp_pavlov",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"cod2master.activision.com resolved to \"\r\n}",
+        "logs": "{}",
+        "stop": "quit"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\nset -euxo pipefail\r\nexport DEBIAN_FRONTEND=noninteractive\r\n\r\ncd \/mnt\/server\r\necho \"[Pterodactyl] Installing COD2\"\r\n\r\ndpkg --add-architecture i386\r\napt-get update -y\r\n\r\napt-get install -y --no-install-recommends \\\r\n  ca-certificates \\\r\n  unzip wget curl screen \\\r\n  libc6-i386 \\\r\n  lib32gcc-s1 \\\r\n  libstdc++6:i386\r\n\r\necho \"[Pterodactyl] Creating libstdc++ compatibility symlink\"\r\nln -sf \/usr\/lib\/i386-linux-gnu\/libstdc++.so.6 \\\r\n       \/usr\/lib\/i386-linux-gnu\/libstdc++.so.5\r\n\r\necho \"[Pterodactyl] Downloading server files\"\r\nwget \"${SERVER_DOWNLOAD}\" -O cod2.zip\r\nunzip -o cod2.zip\r\nrm -f cod2.zip\r\n\r\necho \"[Pterodactyl] Install done\"\r\nexit 0",
+            "container": "debian:bullseye",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Download File",
+            "description": "Server files. It will be downloaded during install. Change this if it fails\r\nfilename must be cod2.zip",
+            "env_variable": "SERVER_DOWNLOAD",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|url",
+            "field_type": "text"
+        }
+    ]
+}
