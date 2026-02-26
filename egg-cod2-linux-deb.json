@@ -32,9 +32,9 @@
             "name": "Download File",
             "description": "Server files. It will be downloaded during install. Change this if it fails\r\nfilename must be cod2.zip",
             "env_variable": "SERVER_DOWNLOAD",
-            "default_value": "",
+            "default_value": "http://179.41.2.31:25596/games/cod2linux/cod2linuxserver.zip",
             "user_viewable": true,
-            "user_editable": true,
+            "user_editable": false,
             "rules": "required|url",
             "field_type": "text"
         }
