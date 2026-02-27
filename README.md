@@ -8,6 +8,8 @@ Si no deseas utilizar el Egg de Pterodactyl y solo necesitas los archivos del se
 
 [Descargar Servidor CoD2 Linux](http://179.41.2.31:25596/games/cod2linux/cod2linuxserver.zip)
 
+Comando de Inicio en consola/CLI : LD_PRELOAD=./libCoD2x.so LD_LIBRARY_PATH=./gcc3-libs ./cod2_lnxded +set dedicated 2 +set net_ip 0.0.0.0 +set net_port (SERVERPORT) +set net_queryPort (SERVERPORT) +set sv_lan 0 +exec server.cfg +map mp_pavlov
+
 ## 🥚 Detalles del Egg (JSON)
 
 El archivo `egg-cod2-linux-deb.json` es la configuración de importación para Pterodactyl.
