@@ -40,6 +40,7 @@ Directorio principal del servidor.
 El servidor se ejecuta utilizando `libCoD2x.so` inyectado vía `LD_PRELOAD`.
 - **Función**: Extiende las capacidades del servidor 1.3, corrige exploits y añade nuevos comandos de script.
 - **Experimental**: Aunque se incluye zPAM 3.36 por estabilidad, la presencia de `libCoD2x` *podría* teóricamente permitir ejecutar versiones más modernas de zPAM u otros mods que requieran funciones extendidas, aunque esto no está garantizado ni configurado por defecto.
+- **Experimental UPDATE**: Se confirma compatibilidad de zPAM 4.x con `libCoD2x`, tambien variables, y configuraciones de CoD2x y zPAM 4
 
 ### `gcc3-libs/`
 Librerías de compatibilidad (`libstdc++.so.5`, `libgcc_s.so`) necesarias para ejecutar el binario original de CoD2 (compilado con GCC 3.3) en sistemas Linux modernos (Debian 10/11/12).
